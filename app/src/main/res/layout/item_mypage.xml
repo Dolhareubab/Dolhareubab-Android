@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="food"
+            type="com.eshc.dolhareubab.data.model.Food" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/margin_size_8"
+        android:layout_marginHorizontal="@dimen/margin_size_24"
+        app:cardCornerRadius="@dimen/radius_size_16">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_food_image"
+                android:layout_width="@dimen/image_size_70"
+                android:layout_height="@dimen/image_size_70"
+                android:layout_margin="@dimen/margin_size_16"
+                app:imageUrl="@{food.imageUrl}"
+                app:corner="@{8}"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_food_name"
+                style="@style/Text.Heading11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_size_24"
+                android:text="@{food.item}"
+                app:layout_constraintBottom_toTopOf="@id/iv_food_purchase"
+                app:layout_constraintStart_toEndOf="@id/iv_food_image"
+                app:layout_constraintTop_toTopOf="@id/iv_food_image"
+                app:layout_constraintVertical_chainStyle="spread_inside"
+                tools:text="상품 이름" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_food_purchase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_lesson"
+                app:layout_constraintBottom_toTopOf="@id/iv_food_expiration"
+                app:layout_constraintStart_toStartOf="@id/tv_food_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_food_name" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_food_purchase"
+                style="@style/Text.Heading12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_size_4"
+                android:text="@{@string/food_purchase(food.filteredBuyTime)}"
+                app:layout_constraintBottom_toBottomOf="@id/iv_food_purchase"
+                app:layout_constraintStart_toEndOf="@id/iv_food_purchase"
+                app:layout_constraintTop_toTopOf="@id/iv_food_purchase" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_food_expiration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_time"
+                app:layout_constraintBottom_toTopOf="@id/iv_food_user"
+                app:layout_constraintStart_toStartOf="@id/tv_food_name"
+                app:layout_constraintTop_toBottomOf="@id/iv_food_purchase" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_food_expiration"
+                style="@style/Text.Heading12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_size_4"
+                android:text="@{@string/food_expiration(food.filteredExpirationTIme)}"
+                app:layout_constraintBottom_toBottomOf="@id/iv_food_expiration"
+                app:layout_constraintStart_toEndOf="@id/iv_food_expiration"
+                app:layout_constraintTop_toTopOf="@id/iv_food_expiration" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_food_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_user_border"
+                app:layout_constraintBottom_toBottomOf="@id/iv_food_image"
+                app:layout_constraintStart_toStartOf="@id/tv_food_name"
+                app:layout_constraintTop_toBottomOf="@id/iv_food_expiration" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_food_user"
+                style="@style/Text.Heading12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_size_4"
+                android:text="@{@string/food_user(food.user.userName)}"
+                app:layout_constraintBottom_toBottomOf="@id/iv_food_user"
+                app:layout_constraintStart_toEndOf="@id/iv_food_user"
+                app:layout_constraintTop_toTopOf="@id/iv_food_user" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:id="@+id/btn_ok"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_size_40"
+                android:textSize="@dimen/text_size_11"
+                android:enabled="@{!food.doneCk}"
+                app:layout_constraintTop_toBottomOf="@id/iv_food_image"
+                android:layout_marginTop="@dimen/margin_size_8"
+                android:layout_marginHorizontal="@dimen/margin_size_16"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="@dimen/margin_size_16"
+                android:text="@{food.state}"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

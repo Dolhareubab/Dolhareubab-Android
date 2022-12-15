@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.eshc.dolhareubab.ui.food.FoodDetailViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_image"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/image_size_190"
+        android:layout_marginHorizontal="@dimen/margin_size_16"
+        android:layout_marginTop="@dimen/margin_size_16"
+        app:imageUrl="@{viewModel.food.imageUrl}"
+        app:corner="@{8}"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/Text.Heading16"
+        android:id="@+id/tv_food_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{viewModel.food.item}"
+        android:layout_marginTop="@dimen/margin_size_24"
+        app:layout_constraintTop_toBottomOf="@id/iv_image"
+        app:layout_constraintStart_toStartOf="@id/iv_image" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/Text.Body14"
+        android:id="@+id/tv_food_purchase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_size_8"
+        android:text="@{@string/food_purchase(viewModel.food.buyTime)}"
+        app:layout_constraintTop_toBottomOf="@id/tv_food_name"
+        app:layout_constraintStart_toStartOf="@id/iv_image"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/Text.Body14"
+        android:id="@+id/tv_food_expiration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{@string/food_expiration(viewModel.food.buyTime)}"
+        android:layout_marginTop="@dimen/margin_size_8"
+        app:layout_constraintTop_toBottomOf="@id/tv_food_purchase"
+        app:layout_constraintStart_toStartOf="@id/iv_image"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/Text.Body14"
+        android:id="@+id/tv_food_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{@string/food_user(viewModel.food.user.userName)}"
+        android:layout_marginTop="@dimen/margin_size_8"
+        app:layout_constraintTop_toBottomOf="@id/tv_food_expiration"
+        app:layout_constraintStart_toStartOf="@id/iv_image"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_ok"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_size_60"
+        android:layout_marginHorizontal="@dimen/margin_size_24"
+        android:layout_marginTop="@dimen/margin_size_40"
+        android:text="@string/food_detail_ok"
+        app:layout_constraintTop_toBottomOf="@id/tv_food_user" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

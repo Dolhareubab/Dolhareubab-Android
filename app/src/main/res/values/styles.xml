@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Text.Heading24" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/text_size_24</item>
+        <item name="android:fontFamily">@font/notosans_kr_bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Text.Heading20" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/text_size_20</item>
+        <item name="android:fontFamily">@font/notosans_kr_bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Text.Heading18" parent="android:TextAppearance">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:fontFamily">@font/font_notosans_bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Text.Heading16" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:fontFamily">@font/font_notosans_bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Text.Heading12" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/text_size_12</item>
+        <item name="android:fontFamily">@font/font_notosans_bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Text.Heading11" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/text_size_11</item>
+        <item name="android:fontFamily">@font/font_notosans_bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Text.Heading8" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/text_size_8</item>
+        <item name="android:fontFamily">@font/font_notosans_regular</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Text.Body14" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:fontFamily">@font/font_notosans_regular</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Text.Body12" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/text_size_12</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:fontFamily">@font/font_notosans_regular</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
+</resources>

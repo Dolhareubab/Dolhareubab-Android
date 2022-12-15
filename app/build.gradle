@@ -6,6 +6,11 @@ plugins {
     id 'androidx.navigation.safeargs.kotlin'
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+def kakao_native_app_key = properties.getProperty("kakao_native_app_key")
+
 android {
     namespace 'com.eshc.dolhareubab'
     compileSdk 32
@@ -18,6 +23,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders = [KAKAO_NATIVE_APP_KEY: kakao_native_app_key]
+        buildConfigField "String", "KAKAO_REST_KEY", properties['kakao_rest_key']
     }
 
     buildTypes {
@@ -71,6 +79,7 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
 
     // Paging
     implementation "androidx.paging:paging-runtime:$paging_version"
@@ -80,4 +89,10 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
     implementation "androidx.navigation:navigation-runtime-ktx:$navigation_version"
+
+    //kakao map
+    implementation files('libs/libDaumMapAndroid.jar')
+
+    //preference
+    implementation 'androidx.preference:preference-ktx:1.2.0'
 }

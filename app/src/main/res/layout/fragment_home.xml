@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/Text.Heading24"
+            android:id="@+id/tv_home_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/margin_size_12"
+            android:text="@string/home_info"
+            android:layout_marginHorizontal="@dimen/margin_size_16"/>
+
+        <View
+            android:id="@+id/v_share"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_size_200"
+            android:layout_marginStart="@dimen/margin_size_16"
+            android:layout_marginEnd="@dimen/margin_size_4"
+            android:background="@drawable/bg_rec_yellow_10"
+            android:text="@string/share_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/v_food"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/img_share"
+            android:layout_marginHorizontal="@dimen/margin_size_32"
+            app:layout_constraintBottom_toTopOf="@id/tv_share"
+            app:layout_constraintEnd_toEndOf="@id/v_share"
+            app:layout_constraintStart_toStartOf="@id/v_share"
+            app:layout_constraintTop_toTopOf="@id/v_share" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_share"
+            style="@style/Text.Heading16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/share_btn"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/iv_share"
+            app:layout_constraintStart_toStartOf="@id/v_share"
+            app:layout_constraintEnd_toEndOf="@id/v_share"
+            app:layout_constraintBottom_toBottomOf="@id/v_share"/>
+
+
+        <View
+            android:id="@+id/v_food"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_size_200"
+            android:layout_marginStart="@dimen/margin_size_4"
+            android:layout_marginEnd="@dimen/margin_size_16"
+            android:background="@drawable/bg_rec_yellow_10"
+            android:text="@string/food_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/v_share"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_hand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/img_hand"
+            android:layout_marginHorizontal="@dimen/margin_size_32"
+            app:layout_constraintBottom_toTopOf="@id/tv_food"
+            app:layout_constraintEnd_toEndOf="@id/v_food"
+            app:layout_constraintStart_toStartOf="@id/v_food"
+            app:layout_constraintTop_toTopOf="@id/v_food" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_food"
+            style="@style/Text.Heading16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/food_btn"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/iv_hand"
+            app:layout_constraintStart_toStartOf="@id/v_food"
+            app:layout_constraintEnd_toEndOf="@id/v_food"
+            app:layout_constraintBottom_toBottomOf="@id/v_food"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
