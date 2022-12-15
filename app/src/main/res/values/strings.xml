@@ -1,3 +1,45 @@
 <resources>
-    <string name="app_name">Dolhareubab</string>
+    <string name="app_name">괸당 냉장고</string>
+
+    <string name="hello">환영합니다!</string>
+
+    <string name="intro">가까운 이웃과 음식울 나누고\n제주의 괸당 문화를 경험해 보세요.</string>
+
+    <string name="name_hint">이름을 입력해 주세요.</string>
+    <string name="phone_hint">연락처를 입력해 주세요.</string>
+
+    <string name="login_ok">신청하기</string>
+    <string name="login_error">필수 입력 정보입니다.</string>
+
+    <string name="home_info">음식을 나누고\n원하는 음식을 받을 수 있어요</string>
+
+    <string name="share_btn">나눌래요</string>
+    <string name="food_btn">받을래요</string>
+
+    <string name="share_title">음식을 등록해주세요.</string>
+    <string name="current_address">현재 위치 : %s</string>
+    <string name="share_image">식품 사진을 등록해주세요.</string>
+    <string name="share_name_hint">식품 이름을 입력해주세요.</string>
+    <string name="share_purchase_hint">구입 날짜를 입력해주세요.</string>
+    <string name="share_expiration_hint">유통기한을 입력해주세요.</string>
+    <string name="share_kakao_link_hint">오픈채팅방 링크를 입력해주세요.</string>
+    <string name="share_ok">등록하기</string>
+
+    <string name="food_title">받을 수 있는 음식이에요.</string>
+    <string name="food_notice">위치 정보를 기반으로 1Km 이내의 정보만 보여요.</string>
+
+    <string name="food_purchase">구입 날짜 : %s</string>
+    <string name="food_expiration">유통기한 : %s</string>
+    <string name="food_user">작성자 : %s</string>
+
+    <string name="food_detail_ok">대화하기</string>
+    
+    <string name="sort_lately">최신등록순</string>
+    <string name="sort_distance">거리순</string>
+    <string name="sort_expire">유통기한순</string>
+
+    <string-array name="mypage_tab">
+        <item>나눔</item>
+        <item>받기</item>
+    </string-array>
 </resources>

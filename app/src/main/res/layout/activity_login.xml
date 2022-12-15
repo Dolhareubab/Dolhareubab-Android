@@ -1,9 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.login.LoginActivity">
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.eshc.dolhareubab.ui.login.LoginViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.login.LoginActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/Text.Heading24"
+            android:id="@+id/tv_login_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/hello"
+            android:layout_marginStart="@dimen/margin_size_24"
+            android:layout_marginTop="@dimen/margin_size_100"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_intro"
+            style="@style/Text.Body14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_login_title"
+            app:layout_constraintStart_toStartOf="@id/tv_login_title"
+            android:text="@string/intro"
+            android:layout_marginTop="@dimen/margin_size_8"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ti_nickname"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name_hint"
+            android:layout_marginTop="@dimen/margin_size_24"
+            android:layout_marginHorizontal="@dimen/text_size_24"
+            app:layout_constraintTop_toBottomOf="@id/tv_intro">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_nickname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.name}"
+                android:maxLength="10"
+                android:imeOptions="actionNext"
+                android:inputType="text" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ti_phone"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/phone_hint"
+            android:layout_marginTop="@dimen/margin_size_24"
+            android:layout_marginHorizontal="@dimen/text_size_24"
+            app:layout_constraintTop_toBottomOf="@id/ti_nickname">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.phone}"
+                android:maxLength="11"
+                android:imeOptions="actionDone"
+                android:inputType="number" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:id="@+id/btn_ok"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_size_60"
+            android:enabled="false"
+            app:layout_constraintTop_toBottomOf="@id/ti_phone"
+            android:layout_marginTop="@dimen/margin_size_40"
+            android:layout_marginHorizontal="@dimen/margin_size_24"
+            android:text="@string/login_ok"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

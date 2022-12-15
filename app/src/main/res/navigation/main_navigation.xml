@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/fragment_home">
+
+    <fragment
+        android:id="@+id/fragment_home"
+        android:name="com.eshc.dolhareubab.ui.home.HomeFragment">
+        <action
+            android:id="@+id/action_fragment_home_to_fragment_share"
+            app:destination="@id/fragment_share" />
+        <action
+            android:id="@+id/action_fragment_home_to_fragment_food"
+            app:destination="@id/fragment_food" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_mypage"
+        android:name="com.eshc.dolhareubab.ui.mypage.MypageFragment"/>
+
+    <fragment
+        android:id="@+id/fragment_share"
+        android:name="com.eshc.dolhareubab.ui.share.ShareFragment"/>
+
+    <fragment
+        android:id="@+id/fragment_food"
+        android:name="com.eshc.dolhareubab.ui.food.FoodFragment">
+        <action
+            android:id="@+id/action_fragment_food_to_fragment_food_detail"
+            app:destination="@id/fragment_food_detail" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_food_detail"
+        android:name="com.eshc.dolhareubab.ui.food.FoodDetailFragment">
+        <argument
+            android:name="foodId"
+            app:argType="integer"
+            app:nullable="false"
+            android:defaultValue="0"/>
+    </fragment>
+
+</navigation>

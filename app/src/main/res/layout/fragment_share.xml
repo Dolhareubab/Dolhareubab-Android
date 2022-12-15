@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="mainViewModel"
+            type="com.eshc.dolhareubab.ui.MainViewModel" />
+        <variable
+            name="shareViewModel"
+            type="com.eshc.dolhareubab.ui.share.ShareViewModel" />
+    </data>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_share_title"
+                style="@style/Text.Heading24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_size_16"
+                android:layout_marginTop="@dimen/margin_size_10"
+                android:text="@string/share_title"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_address"
+                style="@style/Text.Body14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_size_8"
+                android:text="@{@string/current_address(mainViewModel.address)}"
+                app:layout_constraintStart_toStartOf="@id/tv_share_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_share_title" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_image"
+                android:layout_width="match_parent"
+                android:scaleType="centerCrop"
+                android:layout_height="@dimen/image_size_190"
+                android:layout_marginHorizontal="@dimen/margin_size_16"
+                android:layout_marginTop="@dimen/margin_size_16"
+                android:src="@drawable/bg_rec_white_border_2"
+                app:layout_constraintTop_toBottomOf="@id/tv_address" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_image"
+                style="@style/Text.Body14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/iv_image"
+                app:layout_constraintStart_toStartOf="@id/iv_image"
+                app:layout_constraintBottom_toBottomOf="@id/iv_image"
+                app:layout_constraintEnd_toEndOf="@id/iv_image"
+                android:text="@string/share_image"/>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ti_food_name"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_size_16"
+                android:layout_marginTop="@dimen/margin_size_16"
+                android:hint="@string/share_name_hint"
+                app:layout_constraintTop_toBottomOf="@id/iv_image">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/Text.Body14"
+                    android:id="@+id/et_food_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:text="@={shareViewModel.foodName}"
+                    android:maxLength="10" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/Text.Body14"
+                android:id="@+id/tv_food_purchase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_size_16"
+                android:textColor="@color/gray"
+                android:paddingStart="@dimen/margin_size_16"
+                android:layout_marginTop="@dimen/margin_size_16"
+                android:paddingVertical="@dimen/margin_size_16"
+                android:background="@drawable/bg_rec_white_border_4"
+                android:text="@string/share_purchase_hint"
+                app:layout_constraintTop_toBottomOf="@id/ti_food_name"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/Text.Body14"
+                android:id="@+id/tv_food_expiration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_size_16"
+                android:textColor="@color/gray"
+                android:paddingStart="@dimen/margin_size_16"
+                android:layout_marginTop="@dimen/margin_size_16"
+                android:paddingVertical="@dimen/margin_size_16"
+                android:background="@drawable/bg_rec_white_border_4"
+                android:text="@string/share_expiration_hint"
+                app:layout_constraintTop_toBottomOf="@id/tv_food_purchase"/>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ti_food_kakao"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_size_16"
+                android:layout_marginTop="@dimen/margin_size_12"
+
+                android:hint="@string/share_kakao_link_hint"
+                app:layout_constraintTop_toBottomOf="@id/tv_food_expiration">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/Text.Body14"
+                    android:id="@+id/et_food_kakao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionDone"
+                    android:text="@={shareViewModel.foodKakaoLink}"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_ok"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_size_60"
+                android:layout_marginHorizontal="@dimen/margin_size_24"
+                android:layout_marginTop="@dimen/margin_size_40"
+                android:text="@string/share_ok"
+                app:layout_constraintTop_toBottomOf="@id/ti_food_kakao" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
