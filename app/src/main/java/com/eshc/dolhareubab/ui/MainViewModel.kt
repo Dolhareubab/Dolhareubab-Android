@@ -3,6 +3,7 @@ package com.eshc.dolhareubab.ui
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.eshc.dolhareubab.data.repository.UserRepository
 import com.eshc.dolhareubab.data.source.remote.api.KakaoService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -10,7 +11,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    val kakaoService: KakaoService
+    val userRepository: UserRepository
 ) : ViewModel() {
     var myLatitude : String = ""
     var myLongitude : String = ""
@@ -20,11 +21,14 @@ class MainViewModel @Inject constructor(
         myLatitude = latitude
         myLongitude = longitude
         viewModelScope.launch {
-            val response = kakaoService.getAddress(longitude, latitude)
-            response.body()?.documents?.get(0)?.roadAddress?.let {
-                address.value = "${it.region1depthName} ${it.region2depthName} ${it.region3depthName}"
+            val result = userRepository.getUserAddress(longitude, latitude)
+            try {
+                result.getOrThrow().let {
+                    address.value = "${it.region1depthName} ${it.region2depthName} ${it.region3depthName}"
+                }
+            } catch (e: Exception){
+
             }
         }
-
     }
 }
