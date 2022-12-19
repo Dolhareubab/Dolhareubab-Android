@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.eshc.dolhareubab.data.model.Food
 import com.eshc.dolhareubab.data.model.User
+import com.eshc.dolhareubab.data.repository.FoodRepository
 import com.eshc.dolhareubab.data.repository.UserRepository
 import com.eshc.dolhareubab.data.source.FoodDataSource
 import com.eshc.dolhareubab.data.source.remote.FoodDataSourceImpl
@@ -14,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MypageViewModel @Inject constructor(
-    private val foodDataSource: FoodDataSource,
+    private val foodRepository: FoodRepository,
     private val userRepository: UserRepository
 ) : ViewModel() {
 
@@ -28,7 +29,7 @@ class MypageViewModel @Inject constructor(
     fun getFoodList(tab : MypageTabUiState){
         viewModelScope.launch {
             loading.value = true
-            val result = foodDataSource.getFoods(userRepository.getUserId())
+            val result = foodRepository.getFoods(userRepository.getUserId())
             try {
                 mypageFoods.value = when(tab) {
                     MypageTabUiState.SHARE -> result.getOrThrow().foodDetailList.map {
@@ -52,7 +53,7 @@ class MypageViewModel @Inject constructor(
     fun updateFood(food: Food)  {
         viewModelScope.launch {
             try {
-                val result = foodDataSource.checkFood(foodId = food.id)
+                val result = foodRepository.checkFood(foodId = food.id)
                 val targetFood = mypageFoods.value?.find {
                     it.id == food.id
                 }

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.eshc.dolhareubab.data.model.SharedFood
+import com.eshc.dolhareubab.data.repository.FoodRepository
 import com.eshc.dolhareubab.data.repository.UserRepository
 import com.eshc.dolhareubab.data.repository.UserRepositoryImpl
 import com.eshc.dolhareubab.data.source.FoodDataSource
@@ -17,7 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ShareViewModel @Inject constructor(
-    val foodDataSource: FoodDataSourceImpl,
+    val foodRepository: FoodRepository,
     val userRepository: UserRepositoryImpl
 ) : ViewModel() {
 
@@ -33,7 +34,7 @@ class ShareViewModel @Inject constructor(
 
     fun addFood(lati: String, longti: String) {
         viewModelScope.launch {
-            val result = foodDataSource.addFood(
+            val result = foodRepository.addFood(
                 SharedFood(
                     id = userRepository.getUserId(),
                     item = foodName.value.toString(),

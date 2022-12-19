@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.eshc.dolhareubab.data.model.Food
 import com.eshc.dolhareubab.data.model.SortedFoodListRes
 import com.eshc.dolhareubab.data.model.User
+import com.eshc.dolhareubab.data.repository.FoodRepository
 import com.eshc.dolhareubab.data.repository.UserRepository
 import com.eshc.dolhareubab.data.source.FoodDataSource
 import com.eshc.dolhareubab.data.source.remote.FoodDataSourceImpl
@@ -15,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FoodViewModel @Inject constructor(
-    private val foodDataSource: FoodDataSource,
+    private val foodRepository: FoodRepository,
     private val userRepository: UserRepository
 ) : ViewModel() {
     var rawData: SortedFoodListRes? = null
@@ -29,7 +30,7 @@ class FoodViewModel @Inject constructor(
             loading.value = true
             if (rawData == null)
                 try {
-                    rawData = foodDataSource.getSortedFoods(userRepository.getUserId(), lati, longti).getOrThrow()
+                    rawData = foodRepository.getSortedFoods(userRepository.getUserId(), lati, longti).getOrThrow()
                     foods.value = rawData?.foodDetailListNotMine?.toMutableList()
                     loading.value = false
                 } catch (e: Exception) {
