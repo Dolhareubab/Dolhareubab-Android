@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_size_8"
-        android:text="@{@string/food_purchase(viewModel.food.buyTime)}"
+        android:text="@{@string/food_purchase(viewModel.food.filteredBuyTime)}"
         app:layout_constraintTop_toBottomOf="@id/tv_food_name"
         app:layout_constraintStart_toStartOf="@id/iv_image"/>
 
@@ -47,7 +47,7 @@
         android:id="@+id/tv_food_expiration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@{@string/food_expiration(viewModel.food.buyTime)}"
+        android:text="@{@string/food_expiration(viewModel.food.filteredExpirationTIme)}"
         android:layout_marginTop="@dimen/margin_size_8"
         app:layout_constraintTop_toBottomOf="@id/tv_food_purchase"
         app:layout_constraintStart_toStartOf="@id/iv_image"/>
