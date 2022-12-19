@@ -15,6 +15,13 @@ buildscript {
         // hilt
         classpath 'com.google.dagger:hilt-android-gradle-plugin:2.42'
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_version"
+        classpath 'com.google.gms:google-services:4.3.13'
+    }
+    repositories {
+        google()  // Google's Maven repository
+
+        mavenCentral()  // Maven Central repository
+
     }
 }
 plugins {
