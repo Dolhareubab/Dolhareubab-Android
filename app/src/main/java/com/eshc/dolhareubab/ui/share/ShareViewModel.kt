@@ -4,6 +4,7 @@ import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.eshc.dolhareubab.data.model.SharedFood
 import com.eshc.dolhareubab.data.repository.UserRepository
 import com.eshc.dolhareubab.data.repository.UserRepositoryImpl
 import com.eshc.dolhareubab.data.source.FoodDataSource
@@ -30,21 +31,23 @@ class ShareViewModel @Inject constructor(
     val foodExpiration = MutableLiveData<String>()
     val foodKakaoLink = MutableLiveData<String>()
 
-    fun addFood(lati : String, longti : String)  {
+    fun addFood(lati: String, longti: String) {
         viewModelScope.launch {
             val result = foodDataSource.addFood(
-                id = userRepository.getUserId(),
-                item = foodName.value.toString(),
-                purchaseDate = foodPurchase.value.toString(),
-                expirationTime = foodExpiration.value.toString(),
-                talkUrl = foodKakaoLink.value.toString(),
-                imageUri = foodImage.value?.path.toString(),
-                lati = lati,
-                longti = longti
+                SharedFood(
+                    id = userRepository.getUserId(),
+                    item = foodName.value.toString(),
+                    purchaseDate = foodPurchase.value.toString(),
+                    expirationTime = foodExpiration.value.toString(),
+                    talkUrl = foodKakaoLink.value.toString(),
+                    imageUri = foodImage.value?.path.toString(),
+                    lati = lati,
+                    longti = longti
                 )
+            )
             try {
                 submitState.value = result.getOrThrow()
-            } catch (e:Exception){
+            } catch (e: Exception) {
                 submitState.value = false
             }
         }

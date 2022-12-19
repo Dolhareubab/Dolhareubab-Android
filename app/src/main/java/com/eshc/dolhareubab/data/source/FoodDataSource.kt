@@ -2,18 +2,12 @@ package com.eshc.dolhareubab.data.source
 
 import com.eshc.dolhareubab.data.model.Food
 import com.eshc.dolhareubab.data.model.FoodListRes
+import com.eshc.dolhareubab.data.model.SharedFood
 import com.eshc.dolhareubab.data.model.SortedFoodListRes
 
 interface FoodDataSource {
     suspend fun addFood(
-        id: Int, // userId
-        item: String,
-        purchaseDate: String,
-        expirationTime: String,
-        talkUrl: String,
-        lati: String,
-        longti: String,
-        imageUri : String
+        sharedFood: SharedFood
     ) :  Result<Boolean>
     suspend fun getFoods(userId : Int) : Result<FoodListRes>
 

@@ -2,6 +2,7 @@ package com.eshc.dolhareubab.data.source.remote
 
 import com.eshc.dolhareubab.data.model.Food
 import com.eshc.dolhareubab.data.model.FoodListRes
+import com.eshc.dolhareubab.data.model.SharedFood
 import com.eshc.dolhareubab.data.model.SortedFoodListRes
 import com.eshc.dolhareubab.data.source.FoodDataSource
 import com.eshc.dolhareubab.data.source.remote.api.DolhareubabService
@@ -15,31 +16,25 @@ class FoodDataSourceImpl @Inject constructor(
     private val dolhareubabService: DolhareubabService
 ) : FoodDataSource {
     override suspend fun addFood(
-        id: Int,
-        item: String,
-        purchaseDate: String,
-        expirationTime: String,
-        talkUrl: String,
-        lati: String,
-        longti: String,
-        imageUri: String
+        sharedFood: SharedFood
     ): Result<Boolean> {
         try {
-            val file = File(imageUri)
+
+            val file = File(sharedFood.imageUri)
             val requestBody: RequestBody =
                 RequestBody.create("image/jpeg".toMediaTypeOrNull(), file)
 
             val response = dolhareubabService.addFood(
-                id = MultipartBody.Part.createFormData("id", id.toString()),
-                item = MultipartBody.Part.createFormData("item", item),
-                buyTime = MultipartBody.Part.createFormData("buyTime", purchaseDate),
+                id = MultipartBody.Part.createFormData("id", sharedFood.id.toString()),
+                item = MultipartBody.Part.createFormData("item", sharedFood.item),
+                buyTime = MultipartBody.Part.createFormData("buyTime", sharedFood.purchaseDate),
                 expirationTime = MultipartBody.Part.createFormData(
                     "expirationTime",
-                    expirationTime
+                    sharedFood.expirationTime
                 ),
-                talkUrl = MultipartBody.Part.createFormData("talkUrl", talkUrl),
-                lati = MultipartBody.Part.createFormData("lati", lati),
-                longti = MultipartBody.Part.createFormData("longti", longti),
+                talkUrl = MultipartBody.Part.createFormData("talkUrl", sharedFood.talkUrl),
+                lati = MultipartBody.Part.createFormData("lati", sharedFood.lati),
+                longti = MultipartBody.Part.createFormData("longti", sharedFood.longti),
                 files = MultipartBody.Part.createFormData("files", file.name, requestBody) // image
             )
 
