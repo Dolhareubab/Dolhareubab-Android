@@ -21,6 +21,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.eshc.dolhareubab.databinding.FragmentShareBinding
 import com.eshc.dolhareubab.ui.MainViewModel
+import com.eshc.dolhareubab.util.ImageUtil.getImagePath
 import com.eshc.dolhareubab.util.PermissionType
 import com.eshc.dolhareubab.util.PermissionUtil
 import com.eshc.dolhareubab.util.READ_PERMISSIONS_REQUEST_CODE
@@ -156,7 +157,7 @@ class ShareFragment : Fragment() {
                 val selectedImageUri: Uri? = data?.data
 
                 if (selectedImageUri != null) {
-                    shareViewModel.foodImage.value = FoodImage(getImagePath(selectedImageUri),selectedImageUri)
+                    shareViewModel.foodImage.value = FoodImage(getImagePath(requireContext(),selectedImageUri),selectedImageUri)
 
                 } else {
                     Toast.makeText(requireContext(), "사진을 가져오지 못했습니다.", Toast.LENGTH_SHORT).show()
@@ -175,13 +176,11 @@ class ShareFragment : Fragment() {
     }
 
     private fun isValidButton()  {
-        if(shareViewModel.foodImage.value != null
-            && !shareViewModel.foodName.value.isNullOrEmpty()
-            && !shareViewModel.foodKakaoLink.value.isNullOrEmpty()
-            && !shareViewModel.foodPurchase.value.isNullOrEmpty()
-            && !shareViewModel.foodExpiration.value.isNullOrEmpty()){
-            shareViewModel.shareUiState.value = true
-        } else shareViewModel.shareUiState.value = false
+        shareViewModel.shareUiState.value = (shareViewModel.foodImage.value != null
+                && !shareViewModel.foodName.value.isNullOrEmpty()
+                && !shareViewModel.foodKakaoLink.value.isNullOrEmpty()
+                && !shareViewModel.foodPurchase.value.isNullOrEmpty()
+                && !shareViewModel.foodExpiration.value.isNullOrEmpty())
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -195,35 +194,6 @@ class ShareFragment : Fragment() {
 
         },calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).show()
     }
-    fun getImagePath(uri: Uri): String? {
-        var path : String? = uri.path
-        var firstCursor: Cursor? = requireContext().contentResolver?.query(uri, null, null, null, null)
-        firstCursor?.moveToFirst()
-
-
-        var document_id: String? = firstCursor?.getString(0)
-        document_id = document_id?.substring(document_id.lastIndexOf(":") + 1)
-        val cursor = requireContext().contentResolver?.query(
-            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-            null, MediaStore.Images.Media._ID + " = ? ", arrayOf(document_id), null
-        )
-        firstCursor?.count?.let {
-            if(it > 0 && cursor?.count == 0) {
-                firstCursor?.getColumnIndex(MediaStore.Images.Media.DATA)?.let {
-                    path = firstCursor?.getString(it)
-                }
-            }
-        }
-        firstCursor?.close()
-        while(cursor?.moveToNext() == true) {
-            cursor?.getColumnIndex(MediaStore.Images.Media.DATA)?.let {
-                path = cursor?.getString(it)
-            }
-        }
-        cursor?.close()
-        return path
-    }
-
 
     override fun onDestroyView() {
         _binding = null
