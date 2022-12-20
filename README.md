@@ -1,6 +1,6 @@
 <div align="center">
 
-# 구름톤 X KAKAO 4기 
+# 구름톤 X KAKAO 4기 🏆우수상🏆
 
 
 ## 괸당 냉장고
@@ -18,7 +18,7 @@
 ### 
 
 ## 프로젝트 화면
-<img src="https://user-images.githubusercontent.com/50227341/207987982-b7bb0360-0248-4e80-8bc9-46ce15bd1f9f.svg" />
+<img src="https://user-images.githubusercontent.com/50227341/208225078-f022a191-9020-452e-8337-509067efbc53.png" />
 
 
 ## 링크
@@ -34,6 +34,8 @@
 
 
 ## 개발환경 & 기술
+
+<img src="https://user-images.githubusercontent.com/50227341/208224314-7f49affe-a71b-4e36-98a1-0c6852747e02.png"  /> 
 
 ### Android 
 - Kotlin
@@ -51,7 +53,6 @@
 - JPA
 - Maven
 
-
 ## 팀 소개
 
 ### Team 돌하르밥
@@ -59,7 +60,7 @@
 |조유경|고명주|손형호|정석준|
 |-----|-----|-----|-----|
 | 팀장 / 기획자 | <div align="center">IOS 개발자</div> | 백엔드 개발자 | Android 개발자 |
-| <img src="https://avatars.githubusercontent.com/u/67732036?v=4" width="100px" /> | <img src="https://avatars.githubusercontent.com/u/66284051?v=4" width="100px" /> | <img src="https://avatars.githubusercontent.com/u/33920015?v=4" width="100px" /> | <img src="https://avatars.githubusercontent.com/u/50227341?v=4" width="100px" /> |
+|<a href="https://github.com/yugcho"> <img src="https://avatars.githubusercontent.com/u/67732036?v=4" width="100px" /> </a> | <a href="https://github.com/myungju171"> <img src="https://avatars.githubusercontent.com/u/66284051?v=4" width="100px" /></a> | <a href="https://github.com/sh6137"> <img src="https://avatars.githubusercontent.com/u/33920015?v=4" width="100px" /></a> | <a href="https://github.com/eshc123"> <img src="https://avatars.githubusercontent.com/u/50227341?v=4" width="100px" /></a> |
 
 ## 향후 계획
 ### 1. 추가 기능 구현
