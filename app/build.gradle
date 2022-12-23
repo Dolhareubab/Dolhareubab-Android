@@ -27,6 +27,7 @@ android {
 
         manifestPlaceholders = [KAKAO_NATIVE_APP_KEY: kakao_native_app_key]
         buildConfigField "String", "KAKAO_REST_KEY", properties['kakao_rest_key']
+        buildConfigField "String", "KAKAO_NATIVE_APP_KEY", properties['kakao_native_app_key']
     }
 
     buildTypes {
@@ -98,4 +99,6 @@ dependencies {
     implementation 'androidx.preference:preference-ktx:1.2.0'
 
     implementation platform('com.google.firebase:firebase-bom:31.1.1')
+
+    implementation "com.kakao.sdk:v2-all:2.12.0"
 }
