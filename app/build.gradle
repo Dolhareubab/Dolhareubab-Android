@@ -10,8 +10,6 @@ plugins {
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
-def kakao_native_app_key = properties.getProperty("kakao_native_app_key")
-
 android {
     namespace 'com.eshc.dolhareubab'
     compileSdk 32
@@ -25,7 +23,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        manifestPlaceholders = [KAKAO_NATIVE_APP_KEY: kakao_native_app_key]
+        manifestPlaceholders = [kakao_oauth_host_schme: properties['kakao_oauth_host_schme'],KAKAO_NATIVE_APP_KEY: properties['kakao_native_app_key']]
         buildConfigField "String", "KAKAO_REST_KEY", properties['kakao_rest_key']
         buildConfigField "String", "KAKAO_NATIVE_APP_KEY", properties['kakao_native_app_key']
     }
