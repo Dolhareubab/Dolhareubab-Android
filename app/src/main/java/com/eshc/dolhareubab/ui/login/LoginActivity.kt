@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import com.eshc.dolhareubab.R
 import com.eshc.dolhareubab.databinding.ActivityLoginBinding
 import com.eshc.dolhareubab.ui.MainActivity
+import com.eshc.dolhareubab.util.KakaoLoginUtil
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,6 +34,10 @@ class LoginActivity : AppCompatActivity() {
     private fun initViews() {
         binding?.btnOk?.setOnClickListener {
             viewModel.register()
+        }
+
+        binding?.ivKakao?.setOnClickListener {
+            KakaoLoginUtil.login(this)
         }
     }
 

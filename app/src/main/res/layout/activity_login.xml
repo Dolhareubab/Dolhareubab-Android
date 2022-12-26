@@ -91,6 +91,15 @@
             android:layout_marginHorizontal="@dimen/margin_size_24"
             android:text="@string/login_ok"/>
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_kakao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_kakao_login"
+            app:layout_constraintTop_toBottomOf="@id/btn_ok"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="@dimen/margin_size_24"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
