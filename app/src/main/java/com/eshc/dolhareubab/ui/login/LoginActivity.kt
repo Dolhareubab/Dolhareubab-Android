@@ -2,14 +2,13 @@ package com.eshc.dolhareubab.ui.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.eshc.dolhareubab.R
 import com.eshc.dolhareubab.databinding.ActivityLoginBinding
 import com.eshc.dolhareubab.ui.MainActivity
-import com.kakao.sdk.user.UserApiClient
+import com.eshc.dolhareubab.util.KakaoLoginUtil
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,14 +37,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding?.ivKakao?.setOnClickListener {
-            UserApiClient.instance.loginWithKakaoTalk(this) { token, error ->
-                if (error != null) {
-                    Toast.makeText(this,"로그인 실패",Toast.LENGTH_SHORT).show()
-                }
-                else if (token != null) {
-                    Toast.makeText(this,"로그인 성공",Toast.LENGTH_SHORT).show()
-                }
-            }
+            KakaoLoginUtil.login(this)
         }
     }
 
