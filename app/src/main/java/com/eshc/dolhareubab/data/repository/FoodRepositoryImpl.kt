@@ -16,7 +16,7 @@ class FoodRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getFoods(userId: Int): Result<FoodListRes> {
-        return getFoods(userId)
+        return foodDataSource.getFoods(userId)
     }
 
     override suspend fun getSortedFoods(
@@ -24,17 +24,17 @@ class FoodRepositoryImpl @Inject constructor(
         lati: String,
         longti: String
     ): Result<SortedFoodListRes> {
-        return getSortedFoods(
+        return foodDataSource.getSortedFoods(
             userId, lati, longti
         )
     }
 
     override suspend fun getFoodById(foodId: Int): Result<Food> {
-        return getFoodById(foodId)
+        return foodDataSource.getFoodById(foodId)
     }
 
     override suspend fun checkFood(foodId: Int): Result<Food> {
-        return checkFood(foodId)
+        return foodDataSource.checkFood(foodId)
     }
 
 }
