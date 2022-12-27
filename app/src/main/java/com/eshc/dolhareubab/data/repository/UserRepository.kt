@@ -11,5 +11,5 @@ interface UserRepository {
 
     suspend fun addUser(name : String, phone : String) : Result<User>
 
-    suspend fun getUserAddress(longti : String, lati : String) : Result<RoadAddress>
+    suspend fun getUserAddress(longti : String, lati : String) : Result<AddressInfo>
 }
