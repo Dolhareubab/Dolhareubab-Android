@@ -1,5 +1,6 @@
 package com.eshc.dolhareubab.ui
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -23,8 +24,15 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
             val result = userRepository.getUserAddress(longitude, latitude)
             try {
-                result.getOrThrow().let {
-                    address.value = "${it.region1depthName} ${it.region2depthName} ${it.region3depthName}"
+                result.getOrThrow().let { addressInfo ->
+                    if(addressInfo.documents[0].roadAddress != null){
+                        addressInfo.documents[0].roadAddress?.let {
+                            address.value = "${it.region1depthName} ${it.region2depthName} ${it.region3depthName}"
+                        }
+                    } else {
+                        address.value = addressInfo.documents[0].address.addressName
+                    }
+
                 }
             } catch (e: Exception){
 

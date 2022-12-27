@@ -1,5 +1,6 @@
 package com.eshc.dolhareubab.data.repository
 
+import com.eshc.dolhareubab.data.model.AddressInfo
 import com.eshc.dolhareubab.data.model.RoadAddress
 import com.eshc.dolhareubab.data.model.User
 import com.eshc.dolhareubab.data.source.UserDataSource
@@ -27,16 +28,10 @@ class UserRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getUserAddress(longti: String, lati: String): Result<RoadAddress> {
+    override suspend fun getUserAddress(longti: String, lati: String): Result<AddressInfo> {
         try {
             val result = userDataSource.getUserAddress(longti, lati)
-            result.getOrThrow().documents.let { docus ->
-                if (docus.isEmpty()) {
-                    return Result.failure(Exception())
-                } else {
-                    return Result.success(docus[0].roadAddress)
-                }
-            }
+            return Result.success(result.getOrThrow())
 
         } catch (e: Exception) {
             return Result.failure(e)
