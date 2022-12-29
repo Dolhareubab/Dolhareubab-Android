@@ -46,6 +46,18 @@
                 app:layout_constraintVertical_chainStyle="spread_inside"
                 tools:text="상품 이름" />
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_food_distance"
+                style="@style/Text.Body11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_size_24"
+                android:text="@{food.distance}"
+                app:layout_constraintBottom_toBottomOf="@id/tv_food_name"
+                app:layout_constraintStart_toEndOf="@id/tv_food_name"
+                app:layout_constraintTop_toTopOf="@id/tv_food_name"
+                tools:text="2.3km"/>
+
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_food_purchase"
                 android:layout_width="wrap_content"
