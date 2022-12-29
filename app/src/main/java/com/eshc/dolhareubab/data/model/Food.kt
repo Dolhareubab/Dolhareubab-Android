@@ -13,7 +13,8 @@ data class Food(
     val lati : String,
     val longti : String,
     val foodDetailIdx : Int,
-    var state : String = ""
+    var state : String = "",
+    val distance : String = ""
 ) {
     val imageUrl : String
         get() = "https://stoneserver-rcidr.run.goorm.io" + savedPath
@@ -23,4 +24,5 @@ data class Food(
 
     val filteredExpirationTIme : String
         get() = expirationTime.split("T").first()
+
 }
