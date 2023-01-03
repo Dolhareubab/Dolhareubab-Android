@@ -2,6 +2,7 @@ package com.eshc.dolhareubab.ui.gallery
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -51,14 +52,19 @@ class GalleryActivity : AppCompatActivity() {
 
     private fun addClickListener(binding: ActivityGalleryBinding){
         binding.tvDone.setOnClickListener {
-            setResult(RESULT_OK,Intent().putExtra("mediaImage", MediaImageItem(
-                viewModel.images.value?.filter {
-                    it.selected
-                }?.map {
-                    it.mediaImage
-                } ?: emptyList()
-            )))
-            finish()
+            if(viewModel.selectedImageId == null) {
+                Toast.makeText(this, "사진을 선택해주세요",Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            } else {
+                setResult(RESULT_OK,Intent().putExtra("mediaImage", MediaImageItem(
+                    viewModel.images.value?.filter {
+                        it.selected
+                    }?.map {
+                        it.mediaImage
+                    } ?: emptyList()
+                )))
+                finish()
+            }
         }
     }
 
