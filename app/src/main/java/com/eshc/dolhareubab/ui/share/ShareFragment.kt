@@ -21,7 +21,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.eshc.dolhareubab.databinding.FragmentShareBinding
 import com.eshc.dolhareubab.ui.MainViewModel
+import com.eshc.dolhareubab.ui.gallery.GalleryActivity
 import com.eshc.dolhareubab.util.ImageUtil.getImagePath
+import com.eshc.dolhareubab.util.MediaImageItem
 import com.eshc.dolhareubab.util.PermissionType
 import com.eshc.dolhareubab.util.PermissionUtil
 import com.eshc.dolhareubab.util.READ_PERMISSIONS_REQUEST_CODE
@@ -61,10 +63,7 @@ class ShareFragment : Fragment() {
         binding?.shareViewModel = shareViewModel
 
         binding?.ivImage?.setOnClickListener {
-            if(PermissionUtil.checkPermission(permissions,requireActivity(),
-                    READ_PERMISSIONS_REQUEST_CODE)){
-                navigatePhotos()
-            }
+            checkPermission()
         }
 
         binding?.tvFoodPurchase?.setOnClickListener {
@@ -142,7 +141,12 @@ class ShareFragment : Fragment() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if(requestCode == READ_PERMISSIONS_REQUEST_CODE){
-            navigatePhotos()
+            startActivityForResult(
+                Intent(
+                    requireActivity(),
+                    GalleryActivity::class.java
+                ),2000
+            )
         }
     }
 
@@ -154,10 +158,10 @@ class ShareFragment : Fragment() {
 
         when (requestCode) {
             2000 -> {
-                val selectedImageUri: Uri? = data?.data
+                val mediaImageItem = data?.getParcelableExtra<MediaImageItem>("mediaImage")
 
-                if (selectedImageUri != null) {
-                    shareViewModel.foodImage.value = FoodImage(getImagePath(requireContext(),selectedImageUri),selectedImageUri)
+                if (mediaImageItem != null && mediaImageItem.images.size > 0) {
+                    shareViewModel.foodImage.value = FoodImage(getImagePath(requireContext(),mediaImageItem.images[0].contentUri),mediaImageItem.images[0].contentUri)
 
                 } else {
                     Toast.makeText(requireContext(), "사진을 가져오지 못했습니다.", Toast.LENGTH_SHORT).show()
@@ -174,6 +178,24 @@ class ShareFragment : Fragment() {
         intent.type = "image/*"
         startActivityForResult(intent, 2000)
     }
+
+    private fun checkPermission() {
+        if(PermissionUtil.checkPermission(
+                permissions,
+                requireActivity(),
+                READ_PERMISSIONS_REQUEST_CODE
+            )) {
+//                    navigatePhotos()
+            startActivityForResult(
+                Intent(
+                    requireActivity(),
+                    GalleryActivity::class.java
+                ),2000
+            )
+        }
+
+    }
+
 
     private fun isValidButton()  {
         shareViewModel.shareUiState.value = (shareViewModel.foodImage.value != null

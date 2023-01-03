@@ -13,4 +13,7 @@
     <color name="yellow_transparent">#3DFECE00</color>
     <color name="yellow_200">#FFFFE77D</color>
     <color name="yellow_500">#FFFECE00</color>
+    <color name="gray_transparent_80">#CCB1B1B1</color>
+    <color name="gray_light_transparent_80">#CCE8E8E8</color>
+    <color name="white_transparent_70">#B3FFFFFF</color>
 </resources>
