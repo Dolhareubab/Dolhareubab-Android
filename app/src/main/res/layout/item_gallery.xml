@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="photo"
+            type="com.eshc.dolhareubab.ui.gallery.GalleryPhotoUiModel" />
+        <import type="android.view.View"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_rect_white_stroke_2">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_cover"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:1"
+            android:adjustViewBounds="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{photo.mediaImage.contentUri}"
+            android:layout_margin="2dp"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_selected"
+            android:layout_width="@dimen/margin_size_24"
+            android:layout_height="@dimen/margin_size_24"
+            android:src="@drawable/selector_selected"
+            app:layout_constraintTop_toTopOf="@id/iv_cover"
+            app:layout_constraintEnd_toEndOf="@id/iv_cover"
+            android:layout_margin="@dimen/margin_size_8"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
