@@ -14,10 +14,10 @@ object ImageUtil {
 
         var document_id: String? = firstCursor?.getString(0)
         document_id = document_id?.substring(document_id.lastIndexOf(":") + 1)
-        val cursor = context.contentResolver?.query(
+        val cursor = if(document_id != null) context.contentResolver?.query(
             MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
             null, MediaStore.Images.Media._ID + " = ? ", arrayOf(document_id), null
-        )
+        ) else null
         firstCursor?.count?.let {
             if(it > 0 && cursor?.count == 0) {
                 firstCursor?.getColumnIndex(MediaStore.Images.Media.DATA)?.let {
